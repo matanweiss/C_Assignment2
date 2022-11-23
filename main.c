@@ -3,6 +3,7 @@
 
 int main()
 {
+    int dp[SIZE][SIZE][SIZE];
     int matrix[SIZE][SIZE];
     char choise = 'E';
     int i, j;
@@ -12,14 +13,15 @@ int main()
         switch (choise)
         {
         case 'A':
-            A(matrix);
+            A(matrix, dp);
             break;
         case 'B':
             scanf(" %d %d", &i, &j);
-            B(matrix, i, j);
+            B(matrix, i, j, dp);
             break;
         case 'C':
-            printf("C function ");
+            scanf(" %d %d", &i, &j);
+            C(matrix, i, j, dp);
             break;
         case 'P':
             P(matrix);
