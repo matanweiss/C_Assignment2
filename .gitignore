@@ -2,3 +2,4 @@ main.o
 my_mat.o
 connections
 .vscode/
+input.txt

@@ -3,11 +3,14 @@
 
 void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
 {
+    int input;
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
         {
-            scanf("%d", &matrix[i][j]);
+            scanf("%d", &input);
+            matrix[i][j] = input;
+            dp[0][i][j] = input;
         }
     }
     for (int k = 0; k < SIZE; k++)
@@ -16,13 +19,17 @@ void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
         {
             for (int j = 0; j < SIZE; j++)
             {
-                if (i == k || j == k)
+                if (dp[k - 1][i][j] == 0)
                 {
-                    dp[k][i][j] = matrix[i][j];
+                    dp[k][i][j] = dp[k - 1][i][k] + dp[k - 1][k][j];
+                }
+                else if (dp[k - 1][i][k] == 0 || dp[k - 1][k][j] == 0)
+                {
+                    dp[k][i][j] = dp[k - 1][i][j];
                 }
                 else
                 {
-                    dp[k][i][j] = min(dp[k - 1][i][j], dp[k][i][k] + dp[k][k][j]);
+                    dp[k][i][j] = min(dp[k - 1][i][j], dp[k - 1][i][k] + dp[k - 1][k][j]);
                 }
             }
         }
@@ -54,6 +61,23 @@ void P(int matrix[SIZE][SIZE])
         {
             printf(" %d", matrix[i][j]);
         }
+        printf("\n");
+    }
+}
+
+void Q(int dp[SIZE][SIZE][SIZE])
+{
+    for (int k = 0; k < SIZE; k++)
+    {
+        for (int i = 0; i < SIZE; i++)
+        {
+            for (int j = 0; j < SIZE; j++)
+            {
+                printf(" %d", dp[k][i][j]);
+            }
+            printf("\n");
+        }
+        printf("\n\n\n");
     }
 }
 

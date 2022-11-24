@@ -26,6 +26,9 @@ int main()
         case 'P':
             P(matrix);
             break;
+        case 'Q':
+            Q(dp);
+            break;
         }
     }
     return 0;
