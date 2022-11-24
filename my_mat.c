@@ -19,13 +19,14 @@ void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
         {
             for (int j = 0; j < SIZE; j++)
             {
-                if (dp[k - 1][i][j] == 0)
-                {
-                    dp[k][i][j] = dp[k - 1][i][k] + dp[k - 1][k][j];
-                }
-                else if (dp[k - 1][i][k] == 0 || dp[k - 1][k][j] == 0)
+
+                if (dp[k - 1][i][k] == 0 || dp[k - 1][k][j] == 0)
                 {
                     dp[k][i][j] = dp[k - 1][i][j];
+                }
+                else if (dp[k - 1][i][j] == 0)
+                {
+                    dp[k][i][j] = dp[k - 1][i][k] + dp[k - 1][k][j];
                 }
                 else
                 {
@@ -50,7 +51,14 @@ void B(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
 
 void C(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
 {
-    printf("%d\n", dp[SIZE - 1][i][j]);
+    if (dp[SIZE - 1][i][j] == 0)
+    {
+        printf("-1\n");
+    }
+    else
+    {
+        printf("%d\n", dp[SIZE - 1][i][j]);
+    }
 }
 
 void P(int matrix[SIZE][SIZE])

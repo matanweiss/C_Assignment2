@@ -3,3 +3,9 @@ my_mat.o
 connections
 .vscode/
 input.txt
+input1.txt
+input2.txt
+inputs/
+outputs/
+check_submition.py
+hw2_ss.txt
