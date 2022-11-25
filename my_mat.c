@@ -24,7 +24,7 @@ void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
                 {
                     dp[k][i][j] = dp[k - 1][i][j];
                 }
-                else if (dp[k - 1][i][j] == 0)
+                else if (dp[k - 1][i][j] == 0 && i != j)
                 {
                     dp[k][i][j] = dp[k - 1][i][k] + dp[k - 1][k][j];
                 }
