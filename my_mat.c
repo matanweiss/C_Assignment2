@@ -61,34 +61,6 @@ void C(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
     }
 }
 
-void P(int matrix[SIZE][SIZE])
-{
-    for (int i = 0; i < SIZE; i++)
-    {
-        for (int j = 0; j < SIZE; j++)
-        {
-            printf(" %d", matrix[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void Q(int dp[SIZE][SIZE][SIZE])
-{
-    for (int k = 0; k < SIZE; k++)
-    {
-        for (int i = 0; i < SIZE; i++)
-        {
-            for (int j = 0; j < SIZE; j++)
-            {
-                printf(" %d", dp[k][i][j]);
-            }
-            printf("\n");
-        }
-        printf("\n\n\n");
-    }
-}
-
 int min(int a, int b)
 {
     return (a < b) ? a : b;

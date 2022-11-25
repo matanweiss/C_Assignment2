@@ -23,12 +23,6 @@ int main()
             scanf(" %d %d", &i, &j);
             C(matrix, i, j, dp);
             break;
-        case 'P':
-            P(matrix);
-            break;
-        case 'Q':
-            Q(dp);
-            break;
         }
     }
     return 0;
