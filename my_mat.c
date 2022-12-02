@@ -2,16 +2,13 @@
 #include <math.h>
 #include "my_mat.h"
 
-void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
+void A(int matrix[SIZE][SIZE])
 {
-    int input;
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
         {
-            scanf("%d", &input);
-            matrix[i][j] = input;
-            dp[0][i][j] = input;
+            scanf("%d", &matrix[i][j]);
         }
     }
     for (int k = 0; k < SIZE; k++)
@@ -26,18 +23,18 @@ void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
                 }
                 else if (matrix[i][j] == 0 && i != j)
                 {
-                    matrix[i][j] = matrix[i][k] + matrix[k][j];
+                    matrix[i][j] = matrix[i][k] + matrix[k][j]; // matrix[i][j] is zero but there is a path
                 }
                 else
                 {
-                    matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
+                    matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]); // check for a shorter path
                 }
             }
         }
     }
 }
 
-void B(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
+void B(int matrix[SIZE][SIZE], int i, int j)
 {
     if (matrix[i][j])
     {
@@ -49,7 +46,7 @@ void B(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
     }
 }
 
-void C(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
+void C(int matrix[SIZE][SIZE], int i, int j)
 {
     if (matrix[i][j] == 0)
     {
