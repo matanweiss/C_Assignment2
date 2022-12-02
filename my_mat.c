@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "my_mat.h"
 
 void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
@@ -19,18 +20,17 @@ void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
         {
             for (int j = 0; j < SIZE; j++)
             {
-
-                if (dp[k - 1][i][k] == 0 || dp[k - 1][k][j] == 0)
+                if (matrix[i][k] == 0 || matrix[k][j] == 0)
                 {
-                    dp[k][i][j] = dp[k - 1][i][j];
+                    // do nothing
                 }
-                else if (dp[k - 1][i][j] == 0 && i != j)
+                else if (matrix[i][j] == 0 && i != j)
                 {
-                    dp[k][i][j] = dp[k - 1][i][k] + dp[k - 1][k][j];
+                    matrix[i][j] = matrix[i][k] + matrix[k][j];
                 }
                 else
                 {
-                    dp[k][i][j] = min(dp[k - 1][i][j], dp[k - 1][i][k] + dp[k - 1][k][j]);
+                    matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
                 }
             }
         }
@@ -39,7 +39,7 @@ void A(int matrix[SIZE][SIZE], int dp[SIZE][SIZE][SIZE])
 
 void B(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
 {
-    if (dp[SIZE - 1][i][j])
+    if (matrix[i][j])
     {
         printf("True\n");
     }
@@ -51,13 +51,13 @@ void B(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
 
 void C(int matrix[SIZE][SIZE], int i, int j, int dp[SIZE][SIZE][SIZE])
 {
-    if (dp[SIZE - 1][i][j] == 0)
+    if (matrix[i][j] == 0)
     {
         printf("-1\n");
     }
     else
     {
-        printf("%d\n", dp[SIZE - 1][i][j]);
+        printf("%d\n", matrix[i][j]);
     }
 }
 
