@@ -13,4 +13,4 @@ my_mat.o: my_mat.c my_mat.h
 	gcc -Wall -c my_mat.c
 
 clean:
-	rm -f *.o connections
+	rm -f *.o connections *.a
